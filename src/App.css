@@ -19,10 +19,10 @@ html, body {
 }
 
 .meta-board {
-  height: 100%;
+  height: 750px;
+  width: 750px;
   display: flex;
-  flex-direction: column
-
+  flex-direction: column;
 }
 
 .meta-row {
