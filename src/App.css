@@ -50,3 +50,7 @@ html, body {
   border: 1px dotted gray;
   width: 100%;
 }
+
+.hidden {
+  visibility: hidden;
+}

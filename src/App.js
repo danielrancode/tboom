@@ -1,12 +1,12 @@
 import React from 'react';
-import Game from './Game'
+import MetaGame from './MetaGame'
 import './App.css';
 
 const App = () => {
   return (
     <div className="App">
       <div className="App-header">ToeTacTicTicBOOM!!!!!</div>
-      <Game />
+      <MetaGame player="Akiva"/>
     </div>
   )
 }

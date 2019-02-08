@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import MetaBoard from './MetaBoard'
+import Board from './Board'
 
-const Game = () => {
+const Game = ({active}) => {
 
-  const [player, setPlayer] = useState("Akiva")
-  const [score, setScore] = useState(0)
-
-  return <MetaBoard />
+  return <Board active={active}/>
 }
 
 export default Game;

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
-const Board = () => {
+const Board = ({active}) => {
 
   const [selectedSquare, setSelectedSquare] = useState(1)
 
+
   return (
-    <div className="board">
+    <div className={active ? "board" : "board hidden"}>
       <div className="row">
         <div className="square s1">
           1
