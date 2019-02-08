@@ -1,31 +1,32 @@
 import React, { useState } from 'react'
 import Game from './Game.js'
 
-const MetaBoard = ({bombs}) => {
-  console.log(bombs)
-  const [selectedBoard, setSelectedBoard] = useState(1)
-  const [selectedSquare, setSelectedSquare] = useState(1)
+const MetaBoard = ({metaState}) => {
+
+  const { bombIds } = metaState
 
   return (
     <div className="meta-board">
       <div className="meta-row">
-        <Game active={bombs.includes(1)}/>
-        <Game active={bombs.includes(2)}/>
-        <Game active={bombs.includes(3)}/>
+        <Game active={bombIds.includes(1)}/>
+        <Game active={bombIds.includes(2)}/>
+        <Game active={bombIds.includes(3)}/>
       </div>
       <div className="meta-row">
-        <Game active={bombs.includes(4)}/>
-        <Game active={bombs.includes(5)}/>
-        <Game active={bombs.includes(6)}/>
+        <Game active={bombIds.includes(4)}/>
+        <Game active={bombIds.includes(5)}/>
+        <Game active={bombIds.includes(6)}/>
       </div>
       <div className="meta-row">
-        <Game active={bombs.includes(7)}/>
-        <Game active={bombs.includes(8)}/>
-        <Game active={bombs.includes(9)}/>
+        <Game active={bombIds.includes(7)}/>
+        <Game active={bombIds.includes(8)}/>
+        <Game active={bombIds.includes(9)}/>
       </div>
     </div>
   )
 }
 
-
 export default MetaBoard
+
+
+// const [selectedBoard, setSelectedBoard] = useState(1)
