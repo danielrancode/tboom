@@ -4,14 +4,13 @@ import Board from './Board'
 const Game = ({active}) => {
 
   const [gameState, setGameState] = useState({
-    color: 'green'
+    status: 'ticking'
   })
 
-  // useEffect(() => console.log(gameState.color))
+  useEffect(() => console.log(gameState.status))
 
   const changeGameState = (e) => {
-    console.log("target", e.target)
-    // setGameState({...gameState, color: gameState.color == 'red' ? 'green' : 'red'})
+    setGameState({...gameState, status: gameState.status == 'green-border' ? 'red-border' : 'green-border'})
   }
 
 

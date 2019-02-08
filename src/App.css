@@ -54,3 +54,11 @@ html, body {
 .hidden {
   visibility: hidden;
 }
+
+.green-border {
+  border: 5px solid green;
+}
+
+.red-border {
+  border: 5px solid red;
+}

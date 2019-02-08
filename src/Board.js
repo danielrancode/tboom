@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 
-const Board = ({gameState, changeGameState, active}) => {
+const Board = ({active, gameState, changeGameState}) => {
 
-  console.log(changeGameState)
-
-  const { color } = gameState
+  const { status } = gameState
 
   const [selectedSquare, setSelectedSquare] = useState(1)
 
   return (
     <div
-      className={active ? "board" : "board hidden"}
+      className={`${active ? "board" : "board hidden"}
+      ${status}`}
       onClick={changeGameState}
     >
       <div className="row">
