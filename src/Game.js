@@ -27,7 +27,7 @@ const Game = ({id, active}) => {
 
     // check if sqaure is empty
 
-    if (gameState.staus = 'ticking' && position[squareId] === null) {
+    if (gameState.status = 'ticking' && position[squareId] === null) {
       // put in move
       position.splice(squareId, 1, gameState.next)
 
