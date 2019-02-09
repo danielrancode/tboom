@@ -1,20 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board'
+import { randFromOneTo, randFromZeroTo, selectRandomNums } from './helpers.js'
 
-const Game = ({active}) => {
+
+const Game = ({id, active}) => {
+
+  const initialPosition = () => {
+    let position = Array(9).fill(null)
+
+    if (randFromZeroTo(1) === 0) {
+        position[randFromZeroTo(8)] = 'X'
+    }
+
+    return position
+  }
+
+
 
   const [gameState, setGameState] = useState({
+    position: initialPosition(),
     status: 'ticking'
   })
 
   useEffect(() => console.log(gameState.status))
 
   const changeGameState = (e) => {
-    setGameState({...gameState, status: gameState.status == 'green-border' ? 'red-border' : 'green-border'})
+    setGameState({...gameState, /* changed properties */})
   }
 
 
-  return <Board changeGameState={changeGameState} gameState={gameState} active={active}/>
+  return <Board id={id} changeGameState={changeGameState} gameState={gameState} active={active}/>
 }
 
 export default Game;

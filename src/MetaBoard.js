@@ -8,19 +8,19 @@ const MetaBoard = ({metaState}) => {
   return (
     <div className="meta-board">
       <div className="meta-row">
-        <Game active={bombIds.includes(1)}/>
-        <Game active={bombIds.includes(2)}/>
-        <Game active={bombIds.includes(3)}/>
+        <Game id="0" active={bombIds.includes(1)}/>
+        <Game id="1" active={bombIds.includes(2)}/>
+        <Game id="2" active={bombIds.includes(3)}/>
       </div>
       <div className="meta-row">
-        <Game active={bombIds.includes(4)}/>
-        <Game active={bombIds.includes(5)}/>
-        <Game active={bombIds.includes(6)}/>
+        <Game id="3" active={bombIds.includes(4)}/>
+        <Game id="4" active={bombIds.includes(5)}/>
+        <Game id="5" active={bombIds.includes(6)}/>
       </div>
       <div className="meta-row">
-        <Game active={bombIds.includes(7)}/>
-        <Game active={bombIds.includes(8)}/>
-        <Game active={bombIds.includes(9)}/>
+        <Game id="6" active={bombIds.includes(7)}/>
+        <Game id="7" active={bombIds.includes(8)}/>
+        <Game id="8" active={bombIds.includes(9)}/>
       </div>
     </div>
   )

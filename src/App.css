@@ -47,6 +47,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 4em;
   border: 1px dotted gray;
   width: 100%;
 }
