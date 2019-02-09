@@ -52,6 +52,16 @@ const Game = ({id, active}) => {
     })
 
     console.log("winningMove(newNext)", winningMove(position, newNext))
+    if (winningMove(position, newNext)) {
+      setTimeout( () => {
+        winningMove(position, newNext).forEach(n => position[n] = newNext)
+
+        setGameState({
+        ...gameState,
+        position: position,
+        status: 'won'
+      })}, 1000)
+    }
   }
 
 

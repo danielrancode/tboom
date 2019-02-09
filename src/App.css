@@ -63,3 +63,8 @@ html, body {
 .red-border {
   border: 5px solid red;
 }
+
+.won {
+  border: 5px dotted yellow;
+  color: lightblue
+}
