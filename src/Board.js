@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
-const Board = ({id, active, gameState, changeGameState}) => {
-
-  const { playerFirst, position, next, status } = gameState
+const Board = ({id, active, playerFirst, position, next, status, changeGameState}) => {
 
   return (
     <div

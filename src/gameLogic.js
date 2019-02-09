@@ -5,7 +5,7 @@ const winningLines = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4
 const preVictoryPositions = (next) => [[next, next, null], [next, null, next], [null, next, next]]
 
 // beginning player / initial position
-const isPlayerFirst = randFromZeroTo(1) === 0
+const isPlayerFirst = () => randFromZeroTo(1) === 0
 const initialPosition = (bool) => {
   let position = Array(9).fill(null)
   if (!bool) {
@@ -47,14 +47,7 @@ const randomEmptySquare = (position) => {
   return i
 }
 
-const delay = (fn) => {
-  console.log("called", fn)
-  return setTimeout(fn, 1000)
-}
-
-
 
 export { winningLines, preVictoryPositions, isPlayerFirst, initialPosition,
   willLineWin, findWinningLine, findWinningSquare,
-  isGameWon, isDraw, randomEmptySquare,
-  delay }
+  isGameWon, isDraw, randomEmptySquare}
