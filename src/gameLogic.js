@@ -28,4 +28,21 @@ const findWinningSquare = (position, next) => {
   return winningLine && winningLine.find(i => position[i] === null)
 }
 
-export { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinningLine, findWinningSquare }
+const isGameWon = (position) => {
+  return winningLines.find(line => position[line[0]] !== null && position[line[0]] === position[line[1]] && position[line[1]] === position[line[2]])
+}
+
+const isDraw = (position) => {
+  return position.every(sq => sq == 'X' || sq == 'O') && !isGameWon(position)
+}
+
+const randomEmptySquare = (position) => {
+  let i
+  while (position[i] !== null) {
+    i = randFromZeroTo(8)
+  }
+
+  return i
+}
+
+export { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinningLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare }

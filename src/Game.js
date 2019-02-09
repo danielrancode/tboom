@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board'
-import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinnindLine, findWinningSquare } from './gameLogic.js'
+import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinnindLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare } from './gameLogic.js'
 
 
 const Game = ({id, active}) => {
@@ -35,6 +35,7 @@ const Game = ({id, active}) => {
       let playerWinningSquare = findWinningSquare(position, oldNext)
 
       if (winningSquare >= 0 ) {
+        console.log("a")
         setTimeout( () => {
           position[winningSquare] = newNext
 
@@ -42,6 +43,28 @@ const Game = ({id, active}) => {
           ...gameState,
           position: position,
           status: 'won'
+        })}, 1000)
+      } else if (playerWinningSquare >= 0 ) {
+        console.log("b")
+        setTimeout( () => {
+          position[playerWinningSquare] = newNext
+
+          setGameState({
+          ...gameState,
+          position: position,
+          next: oldNext
+        })}, 1000)
+      } else if (isGameWon(position)) {
+        console.log("You won!")
+      } else if (isDraw(position)) {
+        console.log("Draw")
+      } else {
+        setTimeout( () => {
+          position[randomEmptySquare(position)] = newNext
+          setGameState({
+          ...gameState,
+          position: position,
+          next: oldNext
         })}, 1000)
       }
 
@@ -55,6 +78,3 @@ const Game = ({id, active}) => {
 }
 
 export default Game;
-
-
-// useEffect(() => console.log(gameState.status))
