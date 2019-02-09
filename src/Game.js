@@ -9,7 +9,7 @@ const Game = ({id, active}) => {
 
   const initialPosition = (bool) => {
     let position = Array(9).fill(null)
-    if (bool) {
+    if (!bool) {
         position[randFromZeroTo(8)] = 'X'
     }
     return position

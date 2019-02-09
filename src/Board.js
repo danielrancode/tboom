@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
 const Board = ({id, active, gameState, changeGameState}) => {
+
   const { playerFirst, position, next, status } = gameState
-console.log(playerFirst, position, next, status)
-  const [selectedSquare, setSelectedSquare] = useState(1)
 
   return (
     <div
@@ -48,5 +47,7 @@ console.log(playerFirst, position, next, status)
   )
 }
 
-
 export default Board
+
+
+// const [selectedSquare, setSelectedSquare] = useState(1)
