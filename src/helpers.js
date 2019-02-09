@@ -21,4 +21,8 @@ function selectRandomNums(howMany) {
   return selected
 }
 
-export { randFromOneTo, randFromZeroTo, selectRandomNums }
+const getFromArray = (array, indices) => indices.map(i => array[i])
+
+const getLine = (gamePosition, line) => line.map(i => gamePosition[i])
+
+export { randFromOneTo, randFromZeroTo, selectRandomNums, getFromArray, getLine }
