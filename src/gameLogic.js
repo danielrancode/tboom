@@ -33,6 +33,8 @@ const isGameWon = (position) => {
 }
 
 const isDraw = (position) => {
+  console.log("isDraw")
+  console.log(position.every(sq => sq == 'X' || sq == 'O') && !isGameWon(position))
   return position.every(sq => sq == 'X' || sq == 'O') && !isGameWon(position)
 }
 
@@ -45,4 +47,14 @@ const randomEmptySquare = (position) => {
   return i
 }
 
-export { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinningLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare }
+const delay = (fn) => {
+  console.log("called", fn)
+  return setTimeout(fn, 1000)
+}
+
+
+
+export { winningLines, preVictoryPositions, isPlayerFirst, initialPosition,
+  willLineWin, findWinningLine, findWinningSquare,
+  isGameWon, isDraw, randomEmptySquare,
+  delay }

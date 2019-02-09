@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board'
-import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinnindLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare } from './gameLogic.js'
+import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinnindLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare, delay } from './gameLogic.js'
 
 
 const Game = ({id, active}) => {
@@ -12,6 +12,12 @@ const Game = ({id, active}) => {
     status: 'ticking'
   })
 
+  // const [playerFirst, setPlayerFirst] = useState(isPlayerFirst)
+  // const [position, setPosition] = useState(initialPosition(isPlayerFirst))
+  // const [next, setNext] = useState(isPlayerFirst ? 'X' : 'O')
+  // const [status, setStatus] = useState('ticking')
+
+
   const changeGameState = (e) => {
     let squareId = e.target.id
     let position = [...gameState.position]
@@ -21,7 +27,7 @@ const Game = ({id, active}) => {
 
     // check if sqaure is empty
 
-    if (position[squareId] === null) {
+    if (gameState.staus = 'ticking' && position[squareId] === null) {
       // put in move
       position.splice(squareId, 1, gameState.next)
 
@@ -36,36 +42,48 @@ const Game = ({id, active}) => {
 
       if (winningSquare >= 0 ) {
         console.log("a")
-        setTimeout( () => {
+        delay(() => {
           position[winningSquare] = newNext
 
           setGameState({
           ...gameState,
           position: position,
-          status: 'won'
-        })}, 1000)
+          status: 'opponent-won'
+        })
+      })
       } else if (playerWinningSquare >= 0 ) {
-        console.log("b")
-        setTimeout( () => {
+        delay(() => {
           position[playerWinningSquare] = newNext
 
           setGameState({
+            ...gameState,
+            position: position,
+            next: oldNext,
+            status: isDraw(position) ? 'draw' : 'ticking'
+          })
+        })
+      } else if (isGameWon(position)) {
+        setGameState({
           ...gameState,
           position: position,
-          next: oldNext
-        })}, 1000)
-      } else if (isGameWon(position)) {
+          status: "player-won"
+        })
         console.log("You won!")
       } else if (isDraw(position)) {
-        console.log("Draw")
+        console.log("draw")
+        setGameState({
+          ...gameState,
+          position: position,
+          status: "draw"
+        })
       } else {
-        setTimeout( () => {
+        delay(() => {
           position[randomEmptySquare(position)] = newNext
           setGameState({
           ...gameState,
           position: position,
           next: oldNext
-        })}, 1000)
+        })})
       }
 
 

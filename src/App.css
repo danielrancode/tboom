@@ -64,7 +64,16 @@ html, body {
   border: 5px solid red;
 }
 
-.won {
-  border: 5px dotted yellow;
-  color: lightblue
+.opponent-won {
+  border: 10px dotted red;
+  color: red
+}
+.player-won {
+  border: 10px dotted green;
+  color: green
+}
+
+.draw {
+  border: 10px dotted yellow;
+  color: yellow
 }
