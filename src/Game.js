@@ -5,27 +5,30 @@ import { randFromOneTo, randFromZeroTo, selectRandomNums } from './helpers.js'
 
 const Game = ({id, active}) => {
 
-  const initialPosition = () => {
-    let position = Array(9).fill(null)
+  const isPlayerFirst = randFromZeroTo(1) === 0
 
-    if (randFromZeroTo(1) === 0) {
+  const initialPosition = (bool) => {
+    let position = Array(9).fill(null)
+    if (bool) {
         position[randFromZeroTo(8)] = 'X'
     }
-
     return position
   }
 
 
 
   const [gameState, setGameState] = useState({
-    position: initialPosition(),
+    playerFirst: isPlayerFirst,
+    position: initialPosition(isPlayerFirst),
+    next: isPlayerFirst ? 'X' : 'O',
     status: 'ticking'
   })
 
   useEffect(() => console.log(gameState.status))
 
   const changeGameState = (e) => {
-    setGameState({...gameState, /* changed properties */})
+    e.target.innerText = gameState.next
+    setGameState({...gameState, next: gameState.next == 'X' ? 'O' : 'X'})
   }
 
 

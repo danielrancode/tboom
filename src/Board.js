@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 const Board = ({id, active, gameState, changeGameState}) => {
-  const { position, status } = gameState
-
+  const { playerFirst, position, next, status } = gameState
+console.log(playerFirst, position, next, status)
   const [selectedSquare, setSelectedSquare] = useState(1)
 
   return (
