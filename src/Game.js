@@ -29,9 +29,15 @@ const Game = ({id, active}) => {
 
       // update state
       setPosition(newPosition)
-      setNext(next == 'X' ? 'O' : 'X')
-      setPrevious(next == 'X' ? 'X' : 'O')
-      setStatus('opponent')
+      if (isGameWon(newPosition)) {
+        setStatus('player-won')
+      } else if (isDraw(newPosition)) {
+        setStatus('draw')
+      } else {
+        setNext(next == 'X' ? 'O' : 'X')
+        setPrevious(next == 'X' ? 'X' : 'O')
+        setStatus('opponent')
+      }
     }
   }
 
@@ -41,7 +47,7 @@ const Game = ({id, active}) => {
       if (status === 'opponent') {
         let winningSquare = findWinningSquare(position, next)
         let playerWinningSquare = findWinningSquare(position, previous)
-        let newPosition = position
+        let newPosition = [...position]
         // setTimeout(() => console.log("opponentMove!", position, next, status), 1000)
 
         if (winningSquare >= 0 ) {
@@ -59,26 +65,14 @@ const Game = ({id, active}) => {
 
           setPosition(newPosition)
           setNext(previous)
-          setPrevious(next)
           setStatus(isDraw(newPosition) ? 'draw' : 'player')
 
-        } else if (isGameWon(position)) {
-
-            console.log("You won!")
-
-            setStatus("player-won")
-
-        } else if (isDraw(position)) {
-
-            console.log("draw")
-
-            setStatus("draw")
-
         } else {
-            newPosition[randomEmptySquare(position)] = next
-            setPosition(newPosition)
-            setNext(previous)
-            setStatus('player')
+          newPosition[randomEmptySquare(newPosition)] = next
+          setPosition(newPosition)
+          setNext(previous)
+          setPrevious(next)
+          setStatus(isDraw(newPosition) ? 'draw' : 'player')
         }
       }
     // }, 1000)
