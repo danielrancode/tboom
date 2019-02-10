@@ -17,28 +17,9 @@ const Game = ({id, active}) => {
 
 
   // this function is executed when player clicks a square
-  const changeGameState = (e) => {
-    // get square number
-    let id = e.target.id
-
-    // if it is the player's turn to play and the square is empty: make move.
+  const play = (e) => {
     if (status == 'player' && position[id] == null) {
-      playerMove(id)
-      // // create and update new 'position' array
-      // let newPosition = [...position]
-      // newPosition[id] = next
-      //
-      // // update state
-      // setPosition(newPosition)
-      // if (isGameWon(newPosition)) {
-      //   setStatus('player-won')
-      // } else if (isDraw(newPosition)) {
-      //   setStatus('draw')
-      // } else {
-      //   setNext(next == 'X' ? 'O' : 'X')
-      //   setPrevious(next == 'X' ? 'X' : 'O')
-      //   setStatus('opponent')
-      // }
+      playerMove(e.target.id)
     }
   }
 
@@ -108,7 +89,7 @@ const Game = ({id, active}) => {
             next={next}
             previous={previous}
             status={status}
-            changeGameState={changeGameState}
+            play={play}
             active={active}
           />)
 }

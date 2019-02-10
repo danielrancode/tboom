@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-const Board = ({id, active, playerFirst, position, next, status, changeGameState}) => {
+const Board = ({id, active, playerFirst, position, next, status, play}) => {
 
   return (
     <div
       className={` ${active ? "board" : "board hidden"}
       ${status}`}
-      onClick={changeGameState}
+      onClick={play}
     >
       <div className="row">
         <div id="0" className="square s0">
