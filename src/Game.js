@@ -23,21 +23,44 @@ const Game = ({id, active}) => {
 
     // if it is the player's turn to play and the square is empty: make move.
     if (status == 'player' && position[id] == null) {
-      // create and update new 'position' array
-      let newPosition = [...position]
-      newPosition[id] = next
+      playerMove(id)
+      // // create and update new 'position' array
+      // let newPosition = [...position]
+      // newPosition[id] = next
+      //
+      // // update state
+      // setPosition(newPosition)
+      // if (isGameWon(newPosition)) {
+      //   setStatus('player-won')
+      // } else if (isDraw(newPosition)) {
+      //   setStatus('draw')
+      // } else {
+      //   setNext(next == 'X' ? 'O' : 'X')
+      //   setPrevious(next == 'X' ? 'X' : 'O')
+      //   setStatus('opponent')
+      // }
+    }
+  }
 
-      // update state
-      setPosition(newPosition)
-      if (isGameWon(newPosition)) {
-        setStatus('player-won')
-      } else if (isDraw(newPosition)) {
-        setStatus('draw')
-      } else {
-        setNext(next == 'X' ? 'O' : 'X')
-        setPrevious(next == 'X' ? 'X' : 'O')
-        setStatus('opponent')
-      }
+  const playerMove = (squareId)  => {
+    let newPosition = [...position]
+    newPosition[squareId] = next
+    // update position
+    setPosition(newPosition)
+
+    // updateStatus
+    updateStatus(newPosition)
+  }
+
+  const updateStatus = (newPosition) => {
+    if (isGameWon(newPosition)) {
+      setStatus('player-won')
+    } else if (isDraw(newPosition)) {
+      setStatus('draw')
+    } else {
+      setNext(next == 'X' ? 'O' : 'X')
+      setPrevious(next == 'X' ? 'X' : 'O')
+      setStatus('opponent')
     }
   }
 
