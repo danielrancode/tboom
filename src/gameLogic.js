@@ -33,8 +33,7 @@ const isGameWon = (position) => {
 }
 
 const isDraw = (position) => {
-  console.log("isDraw")
-  console.log(position.every(sq => sq == 'X' || sq == 'O') && !isGameWon(position))
+  // console.log(position.every(sq => sq == 'X' || sq == 'O') && !isGameWon(position))
   return position.every(sq => sq == 'X' || sq == 'O') && !isGameWon(position)
 }
 
