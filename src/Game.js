@@ -55,15 +55,11 @@ const Game = ({id, active}) => {
   // if it is opponent turn, it makes opponent move.
   const opponentMove = () => {
     if (status === 'opponent') {
-
       setTimeout(() => {
         let square = chooseBestSquare(position, next, previous)
-
         let newPosition = [...position]
-
         newPosition[square] = next
         updateState(newPosition)
-
       }, 1000)
     }
   }

@@ -30,8 +30,11 @@ html, body {
 }
 
 .meta-board {
-  height: 750px;
-  width: 750px;
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-top: 2%;
+  height: 650px;
+  width: 650px;
   display: flex;
   flex-direction: column;
 }
@@ -51,7 +54,8 @@ html, body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 1em
+  margin: 1em;
+  transition: background-color 1s
 }
 
 .square {
@@ -92,4 +96,55 @@ html, body {
 .draw {
   border: 10px dotted yellow;
   color: yellow
+}
+
+
+/* bomb css */
+
+.n10 {
+  font-size: 70px;
+  color: #318E27
+}
+
+.n9 {
+  font-size: 75px;
+  color: #318E27
+}
+
+.n8 {
+  font-size: 80px;
+  color: #7B9E2B;
+}
+.n7 {
+  font-size: 85px;
+  color: #C1CD22
+}
+.n6 {
+  font-size: 90px;
+  color: #F5F544
+}
+.n5 {
+  font-size: 95px;
+  color: #FF8000;
+}
+.n4 {
+  font-size: 100px;
+  color: #FF8000
+}
+.n3 {
+  font-size: 105px;
+  color: #FF4D00
+}
+.n2 {
+  font-size: 110px;
+  color: #FF0000
+}
+.n1 {
+  font-size: 115px;
+  color: #FF0000
+}
+.n0 {
+  font-size: 130px;
+  color: #660066;
+  /* transition: font-size 0.3s */
 }
