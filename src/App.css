@@ -84,6 +84,11 @@ html, body {
   color: green
 }
 
+.player {
+  background: lightgray;
+  border: 8px lightgray;
+}
+
 .draw {
   border: 10px dotted yellow;
   color: yellow

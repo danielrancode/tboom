@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board'
-import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinningLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare } from './gameLogic.js'
+import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinningLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare, chooseBestSquare } from './gameLogic.js'
 
 
 const Game = ({id, active}) => {
 
   let first = isPlayerFirst()
 
+  // *************** STATE CONSTANTS DEFITIONS *************
   const [playerFirst, setPlayerFirst] = useState(first)
   const [position, setPosition] = useState(initialPosition(first))
   const [next, setNext] = useState(first ? 'X' : 'O')
@@ -15,28 +16,29 @@ const Game = ({id, active}) => {
 
   useEffect(() => {opponentMove()}, [status])
 
+// *************** STATE UPDATE LOGIC *****************
 
   // this function is executed when player clicks a square
   const play = (e) => {
-    if (status == 'player' && position[e.target.id] == null) {
+    if (status == 'player' && position[e.target.id] === null) {
       playerMove(e.target.id)
     }
   }
 
+  // this function is executed once it is confirmed that it is player's turn.
+  // It returns new position array.
   const playerMove = (squareId)  => {
     let newPosition = [...position]
     newPosition[squareId] = next
-
     updateState(newPosition)
   }
 
   // this function is called after each move (by both player and opponent)
   const updateState = (newPosition) => {
+
     setPosition(newPosition)
-    // debugger
 
     if (status === 'player' && isGameWon(newPosition)) {
-      // debugger
       setStatus('player-won')
     } else if (status === 'opponent' && isGameWon(newPosition)) {
       setStatus('opponent-won')
@@ -49,35 +51,21 @@ const Game = ({id, active}) => {
     }
   }
 
-
+  // this function is called only after 'status' changes
+  // if it is opponent turn, it makes opponent move.
   const opponentMove = () => {
-      if (status === 'opponent') {
-        setTimeout(() => {
+    if (status === 'opponent') {
 
-        let winningSquare = findWinningSquare(position, next)
-        let playerWinningSquare = findWinningSquare(position, previous)
+      setTimeout(() => {
+        let square = chooseBestSquare(position, next, previous)
+
         let newPosition = [...position]
 
-        if (winningSquare >= 0 ) {
-
-          console.log("winning square found!")
-          newPosition[winningSquare] = next
-
-          updateState(newPosition)
-
-        } else if (playerWinningSquare >= 0 ) {
-
-          console.log("Watch out! player winning square found!")
-          newPosition[playerWinningSquare] = next
-
-          updateState(newPosition)
-        } else {
-          newPosition[randomEmptySquare(newPosition)] = next
-          updateState(newPosition)
-        }
+        newPosition[square] = next
+        updateState(newPosition)
 
       }, 1000)
-      }
+    }
   }
 
   return (<Board

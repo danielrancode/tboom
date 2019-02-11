@@ -2,10 +2,12 @@ import { randFromOneTo, randFromZeroTo, selectRandomNums, getLine } from './help
 
 // game constants
 const winningLines = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
-const preVictoryPositions = (next) => [[next, next, null], [next, null, next], [null, next, next]]
+
+const preVictoryPositions = (xo) => [[xo, xo, null], [xo, null, xo], [null, xo, xo]]
 
 // beginning player / initial position
 const isPlayerFirst = () => randFromZeroTo(1) === 0
+
 const initialPosition = (bool) => {
   let position = Array(9).fill(null)
   if (!bool) {
@@ -14,18 +16,35 @@ const initialPosition = (bool) => {
   return position
 }
 
-// game logic
-const willLineWin = (line, position, next) => {
-  return preVictoryPositions(next).find(pvPosition => pvPosition[0] == position[line[0]] && pvPosition[1] == position[line[1]] && pvPosition[2] == position[line[2]])
+// ************* game logic *****************
+
+
+const willLineWin = (line, position, xo) => {
+  return preVictoryPositions(xo).find(pvPosition => pvPosition[0] == position[line[0]] && pvPosition[1] == position[line[1]] && pvPosition[2] == position[line[2]])
 }
 
-const findWinningLine = (position, next) => {
-  return winningLines.find(line => willLineWin(line, position, next))
+const findWinningLine = (position, xo) => {
+  // debugger
+
+  return winningLines.find(line => willLineWin(line, position, xo))
 }
 
-const findWinningSquare = (position, next) => {
-  let winningLine = findWinningLine(position, next)
+const findWinningSquare = (position, xo) => {
+  let winningLine = findWinningLine(position, xo)
   return winningLine && winningLine.find(i => position[i] === null)
+}
+
+const chooseBestSquare = (position, next, previous) => {
+  let winningSquare = findWinningSquare(position, next)
+  let playerWinningSquare = findWinningSquare(position, previous)
+  let emptySquare = randomEmptySquare(position)
+  if (winningSquare >= 0) {
+    return winningSquare
+  }
+  if (playerWinningSquare >= 0) {
+    return playerWinningSquare
+  }
+  return emptySquare
 }
 
 const isGameWon = (position) => {
@@ -49,4 +68,4 @@ const randomEmptySquare = (position) => {
 
 export { winningLines, preVictoryPositions, isPlayerFirst, initialPosition,
   willLineWin, findWinningLine, findWinningSquare,
-  isGameWon, isDraw, randomEmptySquare}
+  isGameWon, isDraw, randomEmptySquare, chooseBestSquare}
