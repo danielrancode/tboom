@@ -11,7 +11,7 @@ const isPlayerFirst = () => randFromZeroTo(1) === 0
 const initialPosition = (bool) => {
   let position = Array(9).fill(null)
   if (!bool) {
-      position[randFromZeroTo(8)] = 'X'
+      position[randFromZeroTo(8)] = 'O'
   }
   return position
 }

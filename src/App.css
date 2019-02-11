@@ -50,12 +50,13 @@ html, body {
 }
 
 .board {
-  border: 1px dotted gray;
+  border: 10px solid gray;
   display: flex;
   flex-direction: column;
   width: 100%;
   margin: 1em;
-  transition: background-color 1s
+  /* transition: background-color color 1s; */
+  transition: border 1s
 }
 
 .square {
@@ -90,7 +91,7 @@ html, body {
 
 .player {
   background: lightgray;
-  border: 8px lightgray;
+  /* border: 8px lightgray; */
 }
 
 .draw {
@@ -100,51 +101,41 @@ html, body {
 
 
 /* bomb css */
-
+/*
 .n10 {
-  font-size: 70px;
-  color: #318E27
+  border-color: #318E27
 }
 
 .n9 {
-  font-size: 75px;
-  color: #318E27
+  border-color: #318E27
 }
 
 .n8 {
-  font-size: 80px;
-  color: #7B9E2B;
+  border-color: #7B9E2B;
 }
 .n7 {
-  font-size: 85px;
-  color: #C1CD22
+  border-color: #C1CD22
 }
 .n6 {
-  font-size: 90px;
-  color: #F5F544
+  border-color: #F5F544
 }
+*/
+
 .n5 {
-  font-size: 95px;
-  color: #FF8000;
+  border-color: #FF8000;
 }
 .n4 {
-  font-size: 100px;
-  color: #FF8000
+  border-color: #FF8000
 }
 .n3 {
-  font-size: 105px;
-  color: #FF4D00
+  border-color: #FF4D00
 }
 .n2 {
-  font-size: 110px;
-  color: #FF0000
+  border-color: #FF0000
 }
 .n1 {
-  font-size: 115px;
-  color: #FF0000
+  border-color: #FF0000
 }
 .n0 {
-  font-size: 130px;
-  color: #660066;
-  /* transition: font-size 0.3s */
+  border-color: #660066;
 }

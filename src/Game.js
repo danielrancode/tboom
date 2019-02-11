@@ -10,11 +10,13 @@ const Game = ({id, active}) => {
   // *************** STATE CONSTANTS DEFITIONS *************
   const [playerFirst, setPlayerFirst] = useState(first)
   const [position, setPosition] = useState(initialPosition(first))
-  const [next, setNext] = useState(first ? 'X' : 'O')
-  const [previous, setPrevious] = useState(first ? 'O' : 'X')
+  const [next, setNext] = useState('X')
+  const [previous, setPrevious] = useState('O')
   const [status, setStatus] = useState('player')
+  const [time, setTime] = useState(30)
 
   useEffect(() => {opponentMove()}, [status])
+  useEffect(() => {updateTime()}, [time])
 
 // *************** STATE UPDATE LOGIC *****************
 
@@ -64,6 +66,17 @@ const Game = ({id, active}) => {
     }
   }
 
+  // this function is called on
+  const updateTime = () => {
+    if (time >= 0) {
+      setTimeout(() => {
+        let gameTime = time
+          console.log("game id:", id, "time:", time)
+          setTime(gameTime - 1)
+      }, 1000)
+    }
+  }
+
   return (<Board
             id={id}
             playerFirst={playerFirst}
@@ -71,6 +84,7 @@ const Game = ({id, active}) => {
             next={next}
             previous={previous}
             status={status}
+            time={time}
             play={play}
             active={active}
           />)
