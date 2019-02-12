@@ -1,6 +1,6 @@
 import { randFromOneTo, randFromZeroTo, selectRandomNums, getLine } from './helpers.js'
 
-// game constants
+// ***************** game constants ******************
 const winningLines = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
 
 const preVictoryPositions = (xo) => [[xo, xo, null], [xo, null, xo], [null, xo, xo]]
@@ -18,14 +18,11 @@ const initialPosition = (bool) => {
 
 // ************* game logic *****************
 
-
 const willLineWin = (line, position, xo) => {
   return preVictoryPositions(xo).find(pvPosition => pvPosition[0] == position[line[0]] && pvPosition[1] == position[line[1]] && pvPosition[2] == position[line[2]])
 }
 
 const findWinningLine = (position, xo) => {
-  // debugger
-
   return winningLines.find(line => willLineWin(line, position, xo))
 }
 
