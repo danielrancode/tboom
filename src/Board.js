@@ -9,6 +9,7 @@ const Board = ({id, active, playerFirst, position, next, status, time, play}) =>
       n${time}`}
       onClick={play}
     >
+    {time}
       <div className="row">
         <div id="0" className="square s0">
           {position[0]}

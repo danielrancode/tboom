@@ -3,20 +3,22 @@ import Board from './Board'
 import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinningLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare, chooseBestSquare } from './gameLogic.js'
 
 
-const Game = ({id, active}) => {
+const Game = ({id, active, delay}) => {
+// console.log("delay", delay)
+  const first = isPlayerFirst()
 
-  let first = isPlayerFirst()
-
-  // *************** STATE CONSTANTS DEFITIONS *************
+  // *************** STATE CONSTANTS DECLARATIONS *************
   const [playerFirst, setPlayerFirst] = useState(first)
   const [position, setPosition] = useState(initialPosition(first))
   const [next, setNext] = useState('X')
   const [previous, setPrevious] = useState('O')
-  const [status, setStatus] = useState('player')
-  const [time, setTime] = useState(30)
+  const [status, setStatus] = useState('delay')
+  const [time, setTime] = useState(-1)
 
+  // useEffect(() => {startGame()}, [status])
   useEffect(() => {opponentMove()}, [status])
   useEffect(() => {updateTime()}, [time])
+  useEffect(() => {gameTimeout()}, [])
 
 // *************** STATE UPDATE LOGIC *****************
 
@@ -66,18 +68,28 @@ const Game = ({id, active}) => {
     }
   }
 
-  // this function is called on
   const updateTime = () => {
-    if (time >= 0) {
+    if (time > 0) {
       setTimeout(() => {
         let gameTime = time
-          console.log("game id:", id, "time:", time)
+          // console.log("game id:", id, "time:", time)
           setTime(gameTime - 1)
       }, 1000)
     }
   }
 
-  return (<Board
+  // const startGame = () => {
+  //   setStatus('player')
+  //   setTime(30)
+  // }
+
+  const gameTimeout = () => setTimeout(() => {
+    console.log("callback")
+    setStatus('player')
+    setTime(30)
+  }, delay)
+
+  return  <Board
             id={id}
             playerFirst={playerFirst}
             position={position}
@@ -86,8 +98,8 @@ const Game = ({id, active}) => {
             status={status}
             time={time}
             play={play}
-            active={active}
-          />)
+            active={status === 'delay' ? false : active}
+          />
 }
 
 export default Game;
