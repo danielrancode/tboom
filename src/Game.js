@@ -18,7 +18,7 @@ const Game = ({id, active, delay}) => {
   // useEffect(() => {startGame()}, [status])
   useEffect(() => {opponentMove()}, [status])
   useEffect(() => {updateTime()}, [time])
-  useEffect(() => {gameTimeout()}, [])
+  useEffect(() => {startTimer()}, [])
 
 // *************** STATE UPDATE LOGIC *****************
 
@@ -72,19 +72,12 @@ const Game = ({id, active, delay}) => {
     if (time > 0) {
       setTimeout(() => {
         let gameTime = time
-          // console.log("game id:", id, "time:", time)
           setTime(gameTime - 1)
       }, 1000)
     }
   }
 
-  // const startGame = () => {
-  //   setStatus('player')
-  //   setTime(30)
-  // }
-
-  const gameTimeout = () => setTimeout(() => {
-    console.log("callback")
+  const startTimer = () => setTimeout(() => {
     setStatus('player')
     setTime(30)
   }, delay)
