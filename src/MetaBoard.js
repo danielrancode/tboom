@@ -9,7 +9,7 @@ const MetaBoard = ({score, level, attack, gameIds, gameDelays}) => {
     e.preventDefault()
     console.log(e)
     switch (e.keyCode) {
-      case 40:
+      case 40: 
         break
       case 38:
         break
