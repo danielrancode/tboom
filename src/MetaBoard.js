@@ -2,9 +2,41 @@ import React, { useState } from 'react'
 import Game from './Game.js'
 
 const MetaBoard = ({score, level, attack, gameIds, gameDelays}) => {
-// console.log("gameDelays[1]", gameDelays[1])
+
+  const [selected, setSelected] = useState(null)
+
+  const handleKeyDown = (e) => {
+    e.preventDefault()
+    console.log(e)
+    switch (e.keyCode) {
+      case 40:
+        break
+      case 38:
+        break
+      case 39:
+        break
+      case 37:
+        break
+      case 90:
+        break
+      case 87:
+        break
+      case 83:
+        break
+      case 65:
+        break
+      default:
+        break
+    }
+    setSelected(e.keyCode)
+  }
+
+
+  document.addEventListener('keydown', handleKeyDown)
+
+
   return (
-    <div className="meta-board">
+    <div className="meta-board" >
       <div className="meta-row">
         <Game id="0" active={gameIds.includes(1)} delay={gameDelays[1]}/>
         <Game id="1" active={gameIds.includes(2)} delay={gameDelays[2]}/>

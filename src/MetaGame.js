@@ -4,6 +4,7 @@ import { randFromOneTo, randFromZeroTo, selectRandomNums } from './helpers.js'
 
 const MetaGame = ({player}) => {
 
+
   const gameIds = selectRandomNums(randFromOneTo(9))
   const gameDelays = []
   gameIds.forEach(id => gameDelays[id] = randFromOneTo(5000))
@@ -13,6 +14,8 @@ const MetaGame = ({player}) => {
   const [score, setScore] = useState(0)
   const [level, setLevel] = useState(1)
   const [attack, setAttack] = useState(1)
+
+  
 
   return (
     <MetaBoard
