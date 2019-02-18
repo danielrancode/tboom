@@ -127,10 +127,13 @@ svg {
 }
 
 .player {
-  background: lightgray;
+  background: white;
   /* border: 8px lightgray; */
 }
 
+.opponent {
+  background: lightgray;
+}
 .draw {
   border: 10px dotted yellow;
   color: yellow

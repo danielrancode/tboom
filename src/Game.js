@@ -4,7 +4,6 @@ import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, will
 
 
 const Game = ({id, active, delay}) => {
-// console.log("delay", delay)
   const first = isPlayerFirst()
 
   // *************** STATE CONSTANTS DECLARATIONS *************
@@ -14,6 +13,7 @@ const Game = ({id, active, delay}) => {
   const [previous, setPrevious] = useState('O')
   const [status, setStatus] = useState('delay')
   const [time, setTime] = useState(-1)
+  const [timeoutId, setTimeoutId] = useState(null)
 
   // useEffect(() => {startGame()}, [status])
   useEffect(() => {opponentMove()}, [status])
@@ -69,18 +69,25 @@ const Game = ({id, active, delay}) => {
   }
 
   const updateTime = () => {
-    if (time > 0) {
-      setTimeout(() => {
-        let gameTime = time
-          setTime(gameTime - 1)
+    if (time > 0 && (status === 'player' || status === 'opponent')) {
+      let id = setTimeout(() => {
+        if (status === 'player' || status === 'opponent') {
+          let gameTime = time
+            setTime(gameTime - 1)
+        }
       }, 1000)
+      setTimeoutId(id)
     }
   }
 
-  const startTimer = () => setTimeout(() => {
-    setStatus('player')
-    setTime(30)
-  }, delay)
+  const startTimer = () => {
+    if (active) {
+      setTimeout(() => {
+      setStatus('player')
+      setTime(30)
+    }, delay)
+  }
+}
 
   return  <Board
             id={id}
