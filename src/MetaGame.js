@@ -8,7 +8,7 @@ const MetaGame = ({player}) => {
   const gameIds = selectRandomNums(randFromOneTo(9))
   // console.log("gameIds", gameIds)
   const gameDelays = Array(9).fill(null)
-  gameIds.forEach(id => gameDelays[id] = randFromOneTo(5000))
+  gameIds.forEach(id => gameDelays[id] = randFromOneTo(10000))
   // console.log("gamedelays", gameDelays)
 
   const [score, setScore] = useState(0)

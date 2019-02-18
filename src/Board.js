@@ -2,14 +2,14 @@ import React from 'react'
 
 const Board = ({ id, active, playerFirst, position, next, status, time, play, selectedSquare }) => {
 // console.log("board rendered")
-  return (
+  return (<>
+    {active && time}
     <div
       className={` ${active ? "board" : "board hidden"}
       ${status}
       n${time}`}
       onClick={play}
     >
-    {time}
       <div className="row">
         <div id="0" className={`square s0 ${selectedSquare === 0 && 'isSelected'}`}>
           {position[0]}
@@ -44,6 +44,7 @@ const Board = ({ id, active, playerFirst, position, next, status, time, play, se
         </div>
       </div>
     </div>
+    </>
   )
 }
 
