@@ -32,7 +32,7 @@ const App = () => {
           break
         }
     }
-  }, 500)
+  }, 400)
 }
 
   return intro ?  (
