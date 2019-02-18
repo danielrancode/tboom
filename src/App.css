@@ -95,8 +95,12 @@ html, body {
 }
 
 .draw {
-  border: 10px dotted yellow;
-  color: yellow
+  border: 10px dotted beige;
+  color: beige
+}
+
+.isSelected {
+  border: 2px solid yellow;
 }
 
 

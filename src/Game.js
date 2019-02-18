@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board'
-import { winningLines, preVictoryPositions, isPlayerFirst, initialPosition, willLineWin, findWinningLine, findWinningSquare, isGameWon, isDraw, randomEmptySquare, chooseBestSquare } from './gameLogic.js'
+import { isPlayerFirst, initialPosition, isGameWon, isDraw, chooseBestSquare } from './gameLogic.js'
 
 
 const Game = ({id, active, delay}) => {
-// console.log("delay", delay)
+
   const first = isPlayerFirst()
 
   // *************** STATE CONSTANTS DECLARATIONS *************
@@ -12,8 +12,9 @@ const Game = ({id, active, delay}) => {
   const [position, setPosition] = useState(initialPosition(first))
   const [next, setNext] = useState('X')
   const [previous, setPrevious] = useState('O')
-  const [status, setStatus] = useState('delay')
+  const [status, setStatus] = useState(delay ? 'delay' : 'inactive')
   const [time, setTime] = useState(-1)
+  const [selectedSquare, setSelectedSquare] = useState(null)
 
   // useEffect(() => {startGame()}, [status])
   useEffect(() => {opponentMove()}, [status])
@@ -24,7 +25,7 @@ const Game = ({id, active, delay}) => {
 
   // this function is executed when player clicks a square
   const play = (e) => {
-    if (status == 'player' && position[e.target.id] === null) {
+    if (status === 'player' && position[e.target.id] === null) {
       playerMove(e.target.id)
     }
   }
@@ -77,10 +78,16 @@ const Game = ({id, active, delay}) => {
     }
   }
 
-  const startTimer = () => setTimeout(() => {
-    setStatus('player')
-    setTime(30)
-  }, delay)
+  const startTimer = () => {
+    if (delay) {
+      setTimeout(() => {
+        setStatus('player')
+        setTime(30)
+      }, delay)
+    }
+  }
+
+  console.log("game rendered")
 
   return  <Board
             id={id}
@@ -92,6 +99,7 @@ const Game = ({id, active, delay}) => {
             time={time}
             play={play}
             active={status === 'delay' ? false : active}
+            selectedSquare={selectedSquare}
           />
 }
 

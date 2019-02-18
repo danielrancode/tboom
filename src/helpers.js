@@ -10,7 +10,7 @@ function randFromZeroTo(n) {
 
 // array of random length (1..9), each element is unique random integer (1..9)
 function selectRandomNums(howMany) {
-  let numArr = [1,2,3,4,5,6,7,8,9]
+  let numArr = [0,1,2,3,4,5,6,7,8]
   let selected = []
 
   for (let x = 1; x <= howMany; x++) {

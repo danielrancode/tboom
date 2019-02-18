@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MetaBoard from './MetaBoard'
 import { randFromOneTo, randFromZeroTo, selectRandomNums } from './helpers.js'
 
@@ -6,16 +6,16 @@ const MetaGame = ({player}) => {
 
 
   const gameIds = selectRandomNums(randFromOneTo(9))
-  const gameDelays = []
+  // console.log("gameIds", gameIds)
+  const gameDelays = Array(9).fill(null)
   gameIds.forEach(id => gameDelays[id] = randFromOneTo(5000))
-
-  // gameIds.map(gameId => { return {[gameId]: randFromOneTo(3000)}})
+  // console.log("gamedelays", gameDelays)
 
   const [score, setScore] = useState(0)
   const [level, setLevel] = useState(1)
   const [attack, setAttack] = useState(1)
 
-  
+
 
   return (
     <MetaBoard
