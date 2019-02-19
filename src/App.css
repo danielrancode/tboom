@@ -87,7 +87,7 @@ svg {
 }
 
 .board {
-  border: 10px solid gray;
+  /* border: 2px solid gray; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -110,19 +110,19 @@ svg {
 }
 
 .green-border {
-  border: 5px solid green;
+  border: 2px solid green;
 }
 
 .red-border {
-  border: 5px solid red;
+  border: 2px solid red;
 }
 
 .opponent-won {
-  border: 10px dotted red;
+  border: 2px dotted red;
   color: red
 }
 .player-won {
-  border: 10px dotted green;
+  border: 2px dotted green;
   color: green
 }
 
@@ -135,8 +135,13 @@ svg {
   background: lightgray;
 }
 .draw {
-  border: 10px dotted yellow;
-  color: yellow
+  border: 2px dotted beige;
+  color: beige
+}
+
+.time {
+  color: red;
+  background-color: white;
 }
 
 
@@ -162,22 +167,22 @@ svg {
 */
 
 .n5 {
-  border-color: #FF8000;
+  /* border-color: #FF8000; */
 }
 .n4 {
-  border-color: #FF8000
+  /* border-color: #FF8000 */
 }
 .n3 {
-  border-color: #FF4D00
+  /* border-color: #FF4D00 */
 }
 .n2 {
-  border-color: #FF0000
+  /* border-color: #FF0000 */
 }
 .n1 {
-  border-color: #FF0000
+  /* border-color: #FF0000 */
 }
 .n0 {
-  border-color: #660066;
+  /* border-color: #660066; */
 }
 
 
